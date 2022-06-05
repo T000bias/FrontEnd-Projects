@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex; /*Most projects will be in the middle of the viewport*/
+    /* flex-direction: column;  */
+    align-items: center; /* if flex-direction is column, items would center horizontally. If flex-direction is row, items would center vertically.*/
+    justify-content:center; /*Centers items horizontally*/
+    height: 100vh; /*for justify-content to work we need a height on our body. 100vh is 100% of the viewport height.*/
+    overflow: hidden; /*Don't want scroll bars to be shown by default*/
+    margin: 0;
+}
+
+.sub-div-1 { background-image: url('images/19104.jpg'); }
+.sub-div-2 { background-image: url('images/1oB2fcG.jpg'); }
+.sub-div-3 { background-image: url('images/6VHm0O.jpg'); }
+.sub-div-4 { background-image: url('images/981076_gundam-wing-wallpaper-hd.jpg'); }
+.sub-div-5 { background-image: url('images/images.jpg'); }
+
+.container {
+    display: flex; /*Makes the container a flex row be default.*/
+    width: 90vw;
+}
+
+.panel {
+    background-size:auto 100%; /*Suggestion: try cover instead*/
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: black;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px; 
+    position: relative; /*This needs to relative so that the h3 elements can have an absolute position. */
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0; /*This is 0 because we only want them active when clicked on.*/
+    margin: 0;
+}
+
+
+.panel.active {
+    flex: 5; /*On the active class, make the flex value increase*/
+}
+
+.panel.active h3 {
+    opacity: 1; /*On the active, set the opacity of the h3 element to 1.*/
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+    /* Any style we put in here is active when the width gets to 480px */
+    .container {
+        width: 100vw;
+    }
+
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        /* Grabs the 4 and 5 panels */
+        display: none;
+    }
+}
